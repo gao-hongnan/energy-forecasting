@@ -2,10 +2,9 @@ import json
 import logging
 from pathlib import Path
 from typing import Optional, Union
+
 import joblib
-
 import pandas as pd
-
 from google.cloud import storage
 
 from batch_prediction_pipeline import settings
@@ -36,7 +35,7 @@ def load_model(model_path: Union[str, Path]):
 
     Returns: Loaded model.
     """
-
+    print(model_path)
     return joblib.load(model_path)
 
 

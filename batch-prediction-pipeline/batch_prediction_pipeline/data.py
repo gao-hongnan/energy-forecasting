@@ -2,7 +2,6 @@ from datetime import datetime
 from typing import Tuple
 
 import pandas as pd
-
 from hsfs.feature_store import FeatureStore
 
 

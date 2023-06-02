@@ -19,7 +19,7 @@ Create virtual environment:
    dependencies to the `pyproject.toml` file, as it ensures that Poetry
    accurately resolves and installs the latest compatible versions of all
    dependencies.
-2. We then execute the `poetry_install_feature_pipeline.sh` script. This script
+2. We then execute the `poetry_install.sh` script. This script
    is responsible for creating the virtual environment and installing the
    project dependencies. Importantly, it also includes steps to resolve
    potential issues related to the macOS arm64 architecture.

@@ -5,7 +5,6 @@ from typing import Union
 
 from dotenv import load_dotenv
 
-
 warnings.filterwarnings(action="ignore", category=FutureWarning, module="sktime")
 
 
@@ -44,6 +43,9 @@ def get_root_dir(default_value: str = ".") -> Path:
 
 
 # The settings will be loaded and the outputs will be saved relative to the 'ML_PIPELINE_ROOT_DIR' directory.
+# Set environment variables.
+os.environ["ML_PIPELINE_ROOT_DIR"] = str(Path.cwd())
+
 ML_PIPELINE_ROOT_DIR = get_root_dir()
 OUTPUT_DIR = ML_PIPELINE_ROOT_DIR / "output"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

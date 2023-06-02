@@ -3,13 +3,10 @@ from typing import Optional
 import hopsworks
 import numpy as np
 import pandas as pd
+from sktime.performance_metrics.forecasting import \
+    mean_absolute_percentage_error
 
-from sktime.performance_metrics.forecasting import mean_absolute_percentage_error
-
-from batch_prediction_pipeline import data
-from batch_prediction_pipeline import settings
-from batch_prediction_pipeline import utils
-
+from batch_prediction_pipeline import data, settings, utils
 
 logger = utils.get_logger(__name__)
 
@@ -43,7 +40,8 @@ def compute(feature_view_version: Optional[int] = None) -> None:
 
     logger.info("Connecting to the feature store...")
     project = hopsworks.login(
-        api_key_value=settings.SETTINGS["FS_API_KEY"], project="energy_consumption"
+        api_key_value=settings.SETTINGS["FS_API_KEY"],
+        project=settings.SETTINGS["FS_PROJECT_NAME"],
     )
     fs = project.get_feature_store()
     logger.info("Successfully connected to the feature store.")
