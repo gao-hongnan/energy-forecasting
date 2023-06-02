@@ -29,11 +29,12 @@ resolve_lightgbm() {
 custom_install_hopswork_if_arm64() {
     # Check if on macOS with M1 or ARM chip
     if [[ "$(uname -m)" == "arm64" ]]; then
-    logger "INFO" "Installing librdkafka for M1 chip"
-    resolve_hopswork
-    resolve_lightgbm
+        logger "INFO" "Installing librdkafka for M1 chip"
+        resolve_hopswork
+        resolve_lightgbm
     fi
 }
+
 
 main() {
     custom_install_hopswork_if_arm64
