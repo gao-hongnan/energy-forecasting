@@ -21,7 +21,10 @@ Jinja2 = "3.0.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
+pylint = "^2.11.1"
+isort = "^5.10.3"
+pytest = "^6.2.5"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
