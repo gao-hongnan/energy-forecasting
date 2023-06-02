@@ -17,6 +17,7 @@ python-dotenv = ">=0.21.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
+pylint = "^2.11.1"
 
 [build-system]
 requires = ["poetry-core"]

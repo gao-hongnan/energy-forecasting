@@ -3,7 +3,7 @@ import pandas as pd
 from great_expectations.core import ExpectationSuite
 from hsfs.feature_group import FeatureGroup
 
-from feature_pipeline.settings import SETTINGS
+from feature_pipeline import settings
 
 
 def to_feature_store(
@@ -16,10 +16,10 @@ def to_feature_store(
     performs validation on the data using the suite, and then saves the data to a
     feature store in the feature store.
     """
-
     # Connect to feature store.
     project = hopsworks.login(
-        api_key_value=SETTINGS["FS_API_KEY"], project="energy_consumption"
+        api_key_value=settings.SETTINGS["FS_API_KEY"],
+        project=settings.SETTINGS["FS_PROJECT_NAME"],
     )
     feature_store = project.get_feature_store()
 
@@ -62,7 +62,7 @@ def to_feature_store(
         {
             "name": "consumer_type",
             "description": """
-                            The consumer type is the Industry Code DE35 which is owned by Danish Energy. 
+                            The consumer type is the Industry Code DE35 which is owned by Danish Energy.
                             The code is used by Danish energy companies.
                             """,
             "validation_rules": ">0 (int)",
