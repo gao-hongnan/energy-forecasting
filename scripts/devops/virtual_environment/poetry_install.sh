@@ -21,11 +21,17 @@ resolve_hopswork() {
   export LIBRARY_PATH=/opt/homebrew/Cellar/librdkafka/$VERSION/lib
 }
 
+resolve_lightgbm() {
+  # see https://stackoverflow.com/questions/74566704/cannot-install-lightgbm-3-3-3-on-apple-silicon
+  brew install cmake libomp
+}
+
 custom_install_hopswork_if_arm64() {
     # Check if on macOS with M1 or ARM chip
     if [[ "$(uname -m)" == "arm64" ]]; then
     logger "INFO" "Installing librdkafka for M1 chip"
     resolve_hopswork
+    resolve_lightgbm
     fi
 }
 
