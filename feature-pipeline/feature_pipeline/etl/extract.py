@@ -1,14 +1,12 @@
 import datetime
 from json import JSONDecodeError
-from typing import Any, Dict, Tuple, Optional
+from typing import Any, Dict, Optional, Tuple
 
 import pandas as pd
 import requests
-
 from yarl import URL
 
 from feature_pipeline import utils
-
 
 logger = utils.get_logger(__name__)
 

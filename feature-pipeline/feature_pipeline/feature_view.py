@@ -3,11 +3,9 @@ from typing import Optional
 
 import fire
 import hopsworks
-
-from feature_pipeline import utils
-from feature_pipeline import settings
 import hsfs
 
+from feature_pipeline import settings, utils
 
 logger = utils.get_logger(__name__)
 

@@ -1,4 +1,4 @@
-from great_expectations.core import ExpectationSuite, ExpectationConfiguration
+from great_expectations.core import ExpectationConfiguration, ExpectationSuite
 
 
 def build_expectation_suite() -> ExpectationSuite:
