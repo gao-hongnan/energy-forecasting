@@ -33,8 +33,19 @@ resolve_hopswork() {
 
 resolve_lightgbm() {
   # see https://stackoverflow.com/questions/74566704/cannot-install-lightgbm-3-3-3-on-apple-silicon
-  brew install cmake libomp
+  # Check if cmake is installed
+  if ! brew list --versions cmake >/dev/null; then
+    # If cmake is not installed, install it
+    brew install cmake
+  fi
+
+  # Check if libomp is installed
+  if ! brew list --versions libomp >/dev/null; then
+    # If libomp is not installed, install it
+    brew install libomp
+  fi
 }
+
 
 custom_install_hopswork_if_arm64() {
     # Check if on macOS with M1 or ARM chip
