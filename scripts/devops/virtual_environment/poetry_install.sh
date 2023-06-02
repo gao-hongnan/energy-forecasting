@@ -47,6 +47,9 @@ main() {
     logger "INFO" "Activating the poetry environment and installing dependencies"
     poetry shell
     poetry install
+
+    logger "INFO" "Source the virtual environment"
+    logger "CODE" "source .venv/bin/activate"
 }
 
 main
