@@ -10,7 +10,7 @@ Create virtual environment:
 
 ```shell
 ~/energy-forecasting                  $ cd feature-pipeline && rm poetry.lock
-~/energy-forecasting/feature-pipeline $ bash ../scripts/devops/virtual_environment/poetry_install_feature_pipeline.sh
+~/energy-forecasting/feature-pipeline $ bash ../scripts/devops/virtual_environment/poetry_install.sh
 ~/energy-forecasting/feature-pipeline $ source .venv/bin/activate
 ```
 
