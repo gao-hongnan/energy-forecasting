@@ -35,7 +35,6 @@ custom_install_hopswork_if_arm64() {
     fi
 }
 
-
 main() {
     custom_install_hopswork_if_arm64
 
