@@ -35,10 +35,11 @@ def get_root_dir(default_value: str = ".") -> Path:
     Returns:
         Path to the root directory of the project.
     """
-
     return Path(os.getenv("ML_PIPELINE_ROOT_DIR", default_value))
 
 
+# Set environment variables.
+os.environ["ML_PIPELINE_ROOT_DIR"] = str(Path.cwd().parent)
 ML_PIPELINE_ROOT_DIR = get_root_dir()
 OUTPUT_DIR = ML_PIPELINE_ROOT_DIR / "output"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
