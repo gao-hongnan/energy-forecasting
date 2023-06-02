@@ -7,7 +7,11 @@ logger "INFO" "Fetched the utils.sh script from a URL and sourced it"
 
 resolve_hopswork() {
   # Install librdkafka
-  brew install librdkafka
+  # brew install librdkafka
+  # see https://community.hopsworks.ai/t/ssl-handshake-failed-on-macos-hopsworks-serverless/886/3
+  curl -O https://raw.githubusercontent.com/Homebrew/homebrew-core/f7d0f40bbc4075177ecf16812fd95951a723a996/Formula/librdkafka.rb
+  brew install --build-from-source librdkafka.rb
+  rm librdkafka.rb
 
   # Get the version of librdkafka installed
   VERSION=$(ls /opt/homebrew/Cellar/librdkafka | tail -n 1)
