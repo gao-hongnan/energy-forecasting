@@ -6,15 +6,25 @@ source /dev/stdin <<<"$UTILS_SCRIPT"
 logger "INFO" "Fetched the utils.sh script from a URL and sourced it"
 
 resolve_hopswork() {
-  # Install librdkafka
-  # brew install librdkafka
-  # see https://community.hopsworks.ai/t/ssl-handshake-failed-on-macos-hopsworks-serverless/886/3
-  curl -O https://raw.githubusercontent.com/Homebrew/homebrew-core/f7d0f40bbc4075177ecf16812fd95951a723a996/Formula/librdkafka.rb
-  brew install --build-from-source librdkafka.rb
-  rm librdkafka.rb
+  # Check if librdkafka is installed and at the correct version
+  installed_versions=$(brew list --versions librdkafka)
+  required_version="1.9.2"  # replace this with the version you want
 
-  # Get the version of librdkafka installed
-  VERSION=$(ls /opt/homebrew/Cellar/librdkafka | tail -n 1)
+  if ! echo "$installed_versions" | grep -q "$required_version"; then
+    # If librdkafka is not installed or not at the correct version, proceed with installation
+
+    # see https://community.hopsworks.ai/t/ssl-handshake-failed-on-macos-hopsworks-serverless/886/3
+    curl -O https://raw.githubusercontent.com/Homebrew/homebrew-core/f7d0f40bbc4075177ecf16812fd95951a723a996/Formula/librdkafka.rb
+    brew install --build-from-source librdkafka.rb
+    rm librdkafka.rb
+  else
+    logger "INFO" "librdkafka is already installed at the correct version!"
+  fi
+
+  # Set VERSION to the required version, assuming it is now installed
+  VERSION=$required_version
+  # use below if the librdkafka version is fixed
+  # VERSION=$(ls /opt/homebrew/Cellar/librdkafka | tail -n 1)
 
   # Export necessary environment variables
   export C_INCLUDE_PATH=/opt/homebrew/Cellar/librdkafka/$VERSION/include
@@ -44,7 +54,7 @@ main() {
 
     # Activate the poetry environment and install dependencies
     logger "INFO" "Activating the poetry environment and installing dependencies"
-    poetry shell
+    # poetry shell
     poetry install
 
     logger "INFO" "Source the virtual environment"
