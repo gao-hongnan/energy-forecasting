@@ -1,18 +1,18 @@
 import json
+from typing import Optional
+
 import fire
 import wandb
 
-from typing import Optional
-
 from training_pipeline import utils
-from training_pipeline.settings import SETTINGS, OUTPUT_DIR
+from training_pipeline.settings import OUTPUT_DIR, SETTINGS
 
 logger = utils.get_logger(__name__)
 
 
 """
-NOTE: We moved the log best model logic to a different process as there is a bug in W&B sweeps that whatever you do, 
-when you create a new run after a sweep, it will override the last run of the sweep. 
+NOTE: We moved the log best model logic to a different process as there is a bug in W&B sweeps that whatever you do,
+when you create a new run after a sweep, it will override the last run of the sweep.
 This will result in overriding the wrong run and getting the wrong config.
 """
 

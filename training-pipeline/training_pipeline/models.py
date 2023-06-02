@@ -1,6 +1,5 @@
 import lightgbm as lgb
-
-from sktime.forecasting.compose import make_reduction, ForecastingPipeline
+from sktime.forecasting.compose import ForecastingPipeline, make_reduction
 from sktime.forecasting.naive import NaiveForecaster
 from sktime.transformations.series.date import DateTimeFeatures
 from sktime.transformations.series.summarize import WindowSummarizer

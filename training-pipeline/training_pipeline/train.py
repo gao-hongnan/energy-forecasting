@@ -1,8 +1,10 @@
 import json
-from collections import OrderedDict
 import os
+from collections import OrderedDict
 from pathlib import Path
-from typing import OrderedDict as OrderedDictType, Optional, Tuple
+from typing import Optional
+from typing import OrderedDict as OrderedDictType
+from typing import Tuple
 
 import fire
 import hopsworks
@@ -11,17 +13,13 @@ import numpy as np
 import pandas as pd
 import wandb
 from sktime.performance_metrics.forecasting import (
-    mean_squared_percentage_error,
-    mean_absolute_percentage_error,
-)
+    mean_absolute_percentage_error, mean_squared_percentage_error)
 from sktime.utils.plotting import plot_series
 
-
 from training_pipeline import utils
-from training_pipeline.settings import SETTINGS, OUTPUT_DIR
 from training_pipeline.data import load_dataset_from_feature_store
-from training_pipeline.models import build_model, build_baseline_model
-
+from training_pipeline.models import build_baseline_model, build_model
+from training_pipeline.settings import OUTPUT_DIR, SETTINGS
 
 logger = utils.get_logger(__name__)
 

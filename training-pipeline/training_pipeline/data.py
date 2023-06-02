@@ -1,12 +1,12 @@
 from typing import Tuple
+
 import hopsworks
 import pandas as pd
 import wandb
-
 from sktime.forecasting.model_selection import temporal_train_test_split
 
-from training_pipeline.utils import init_wandb_run
 from training_pipeline.settings import SETTINGS
+from training_pipeline.utils import init_wandb_run
 
 
 def load_dataset_from_feature_store(

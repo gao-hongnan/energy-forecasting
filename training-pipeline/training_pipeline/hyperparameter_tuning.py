@@ -5,7 +5,6 @@ import fire
 import numpy as np
 import pandas as pd
 import wandb
-
 from matplotlib import pyplot as plt
 from sktime.forecasting.model_evaluation import evaluate as cv_evaluate
 from sktime.forecasting.model_selection import ExpandingWindowSplitter
@@ -16,9 +15,8 @@ from training_pipeline import utils
 from training_pipeline.configs import gridsearch as gridsearch_configs
 from training_pipeline.data import load_dataset_from_feature_store
 from training_pipeline.models import build_model
+from training_pipeline.settings import OUTPUT_DIR, SETTINGS
 from training_pipeline.utils import init_wandb_run
-from training_pipeline.settings import SETTINGS, OUTPUT_DIR
-
 
 logger = utils.get_logger(__name__)
 
