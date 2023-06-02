@@ -13,7 +13,9 @@ import numpy as np
 import pandas as pd
 import wandb
 from sktime.performance_metrics.forecasting import (
-    mean_absolute_percentage_error, mean_squared_percentage_error)
+    mean_absolute_percentage_error,
+    mean_squared_percentage_error,
+)
 from sktime.utils.plotting import plot_series
 
 from training_pipeline import utils
@@ -305,7 +307,7 @@ def attach_best_model_to_feature_store(
     """Adds the best model artifact to the model registry."""
 
     project = hopsworks.login(
-        api_key_value=SETTINGS["FS_API_KEY"], project="energy_consumption"
+        api_key_value=SETTINGS["FS_API_KEY"], project=SETTINGS["FS_PROJECT_NAME"]
     )
     fs = project.get_feature_store()
     feature_view = fs.get_feature_view(

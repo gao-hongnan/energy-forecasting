@@ -1,5 +1,3 @@
-from typing import Tuple
-
 import hopsworks
 import pandas as pd
 import wandb
@@ -7,11 +5,12 @@ from sktime.forecasting.model_selection import temporal_train_test_split
 
 from training_pipeline.settings import SETTINGS
 from training_pipeline.utils import init_wandb_run
+from training_pipeline.typings import TrainTestDataType
 
 
 def load_dataset_from_feature_store(
     feature_view_version: int, training_dataset_version: int, fh: int = 24
-) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+) -> TrainTestDataType:
     """Load features from feature store.
 
     Args:
@@ -24,7 +23,7 @@ def load_dataset_from_feature_store(
     """
 
     project = hopsworks.login(
-        api_key_value=SETTINGS["FS_API_KEY"], project="energy_consumption"
+        api_key_value=SETTINGS["FS_API_KEY"], project=SETTINGS["FS_PROJECT_NAME"]
     )
     fs = project.get_feature_store()
 
@@ -41,6 +40,7 @@ def load_dataset_from_feature_store(
         fv_metadata = feature_view.to_dict()
         fv_metadata["query"] = fv_metadata["query"].to_string()
         fv_metadata["features"] = [f.name for f in fv_metadata["features"]]
+        # pylint: disable=protected-access
         fv_metadata["link"] = feature_view._feature_view_engine._get_feature_view_url(
             feature_view
         )
@@ -92,7 +92,7 @@ def load_dataset_from_feature_store(
 
 def prepare_data(
     data: pd.DataFrame, target: str = "energy_consumption", fh: int = 24
-) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+) -> TrainTestDataType:
     """
     Structure the data for training:
     - Set the index as is required by sktime.
