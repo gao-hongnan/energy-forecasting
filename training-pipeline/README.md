@@ -4,24 +4,10 @@ Check out this
 [Medium article](https://medium.com/towards-data-science/a-guide-to-building-effective-training-pipelines-for-maximum-results-6fdaef594cee)
 for more details about this module.
 
-## Install for Development
-
-```shell
-~/energy-forecasting                   $ cd training-pipeline && rm poetry.lock
-~/energy-forecasting/training-pipeline $ bash ../scripts/devops/virtual_environment/poetry_install.sh
-~/energy-forecasting/training-pipeline $ source .venv/bin/activate
-```
-
-Check the
-[Set Up Additional Tools](https://github.com/iusztinpaul/energy-forecasting#-set-up-additional-tools-)
-and [Usage](https://github.com/iusztinpaul/energy-forecasting#usage) sections to
-see **how to set up** the **additional tools** and **credentials** you need to
-run this project.
-
 ## Create Environment File
 
 ```shell
-~/energy-forecasting/training-pipeline $ cp .env.default .env
+~/energy-forecasting $ cp .env.default .env
 ```
 
 The command `cp .env.default .env` is used to create a copy of the
@@ -34,7 +20,7 @@ to `.env`, you can customize these values for your own environment.
 ## Set Up the ML_PIPELINE_ROOT_DIR Variable
 
 ```shell
-~/energy-forecasting/training-pipeline $ export ML_PIPELINE_ROOT_DIR=$(pwd)
+~/energy-forecasting $ export ML_PIPELINE_ROOT_DIR=$(pwd)
 ```
 
 The command `export ML_PIPELINE_ROOT_DIR=$(pwd)` is setting the value of the
@@ -48,6 +34,20 @@ In essence, `ML_PIPELINE_ROOT_DIR` is an environment variable that is set to the
 path of the current directory. This can be useful for scripts or programs that
 need to reference the root directory of the ML pipeline, as they can simply
 refer to `ML_PIPELINE_ROOT_DIR` instead of needing to know the exact path.
+
+## Install for Development
+
+```shell
+~/energy-forecasting                   $ cd training-pipeline && rm poetry.lock
+~/energy-forecasting/training-pipeline $ bash ../scripts/devops/virtual_environment/poetry_install.sh
+~/energy-forecasting/training-pipeline $ source .venv/bin/activate
+```
+
+Check the
+[Set Up Additional Tools](https://github.com/iusztinpaul/energy-forecasting#-set-up-additional-tools-)
+and [Usage](https://github.com/iusztinpaul/energy-forecasting#usage) sections to
+see **how to set up** the **additional tools** and **credentials** you need to
+run this project.
 
 ## Usage for Development
 

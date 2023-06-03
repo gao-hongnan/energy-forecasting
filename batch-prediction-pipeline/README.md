@@ -4,6 +4,37 @@ Check out this
 [Medium article](https://towardsdatascience.com/unlock-the-secret-to-efficient-batch-prediction-pipelines-using-python-a-feature-store-and-gcs-17a1462ca489)
 for more details about this module.
 
+## Create Environment File
+
+```shell
+~/energy-forecasting $ cp .env.default .env
+```
+
+The command `cp .env.default .env` is used to create a copy of the
+`.env.default` file and name it `.env`. In many projects, the `.env` file is
+used to store environment variables that the application needs to run. The
+`.env.default` file is usually a template that includes all the environment
+variables that the application expects, but with default values. By copying it
+to `.env`, you can customize these values for your own environment.
+
+## Set Up the ML_PIPELINE_ROOT_DIR Variable
+
+```shell
+~/energy-forecasting $ export ML_PIPELINE_ROOT_DIR=$(pwd)
+```
+
+The command `export ML_PIPELINE_ROOT_DIR=$(pwd)` is setting the value of the
+`ML_PIPELINE_ROOT_DIR` environment variable to the current directory. In this
+context, `$(pwd)` is a command substitution that gets replaced with the output
+of the `pwd` command, which prints the path of the current directory. The
+`export` command then makes this variable available to child processes of the
+current shell.
+
+In essence, `ML_PIPELINE_ROOT_DIR` is an environment variable that is set to the
+path of the current directory. This can be useful for scripts or programs that
+need to reference the root directory of the ML pipeline, as they can simply
+refer to `ML_PIPELINE_ROOT_DIR` instead of needing to know the exact path.
+
 ## Install for Development
 
 The batch prediction pipeline uses the training pipeline module as a dependency.
