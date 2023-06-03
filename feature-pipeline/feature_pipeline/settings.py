@@ -39,7 +39,8 @@ def get_root_dir(default_value: str = ".") -> Path:
 
 
 # Set environment variables.
-os.environ["ML_PIPELINE_ROOT_DIR"] = str(Path.cwd().parent)
+if os.getenv("ML_PIPELINE_ROOT_DIR") is None:
+    os.environ["ML_PIPELINE_ROOT_DIR"] = str(Path.cwd().parent)
 ML_PIPELINE_ROOT_DIR = get_root_dir()
 OUTPUT_DIR = ML_PIPELINE_ROOT_DIR / "output"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

@@ -18,11 +18,7 @@ from airflow.utils.edgemodifier import Label
 def ml_pipeline():
     @task.virtualenv(
         task_id="run_feature_pipeline",
-        requirements=[
-            "--trusted-host 172.17.0.1",
-            "--extra-index-url http://172.17.0.1",
-            "feature_pipeline",
-        ],
+        requirements=["g-feature-pipeline"],
         python_version="3.9",
         multiple_outputs=True,
         system_site_packages=True,
@@ -92,11 +88,7 @@ def ml_pipeline():
 
     @task.virtualenv(
         task_id="create_feature_view",
-        requirements=[
-            "--trusted-host 172.17.0.1",
-            "--extra-index-url http://172.17.0.1",
-            "feature_pipeline",
-        ],
+        requirements=["g-feature-pipeline"],
         python_version="3.9",
         multiple_outputs=True,
         system_site_packages=False,
@@ -116,9 +108,7 @@ def ml_pipeline():
     @task.virtualenv(
         task_id="run_hyperparameter_tuning",
         requirements=[
-            "--trusted-host 172.17.0.1",
-            "--extra-index-url http://172.17.0.1",
-            "training_pipeline",
+            "g-training-pipeline",
         ],
         python_version="3.9",
         multiple_outputs=True,
@@ -141,9 +131,7 @@ def ml_pipeline():
     @task.virtualenv(
         task_id="upload_best_config",
         requirements=[
-            "--trusted-host 172.17.0.1",
-            "--extra-index-url http://172.17.0.1",
-            "training_pipeline",
+            "g-training-pipeline",
         ],
         python_version="3.9",
         multiple_outputs=False,
@@ -162,9 +150,7 @@ def ml_pipeline():
     @task.virtualenv(
         task_id="train_from_best_config",
         requirements=[
-            "--trusted-host 172.17.0.1",
-            "--extra-index-url http://172.17.0.1",
-            "training_pipeline",
+            "g-training-pipeline",
         ],
         python_version="3.9",
         multiple_outputs=True,
@@ -197,9 +183,7 @@ def ml_pipeline():
     @task.virtualenv(
         task_id="compute_monitoring",
         requirements=[
-            "--trusted-host 172.17.0.1",
-            "--extra-index-url http://172.17.0.1",
-            "batch_prediction_pipeline",
+            "g-batch-prediction-pipeline",
         ],
         python_version="3.9",
         system_site_packages=False,
@@ -220,9 +204,7 @@ def ml_pipeline():
     @task.virtualenv(
         task_id="batch_predict",
         requirements=[
-            "--trusted-host 172.17.0.1",
-            "--extra-index-url http://172.17.0.1",
-            "batch_prediction_pipeline",
+            "g-batch-prediction-pipeline",
         ],
         python_version="3.9",
         system_site_packages=False,
