@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "g-batch-prediction-pipeline"
-version = "0.2.0"
+version = "0.3.0"
 description = ""
 authors = ["Iusztin Paul <p.e.iusztin@gmail.com>"]
 readme = "README.md"
@@ -15,7 +15,7 @@ lightgbm = "^3.3.5"
 sktime = "^0.16.1"
 google-cloud-storage = "^2.7.0"
 fire = "^0.5.0"
-g-training-pipeline = "^0.1.0"
+g-training-pipeline = "^0.3.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
