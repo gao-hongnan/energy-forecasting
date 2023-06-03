@@ -45,6 +45,7 @@ def get_root_dir(default_value: str = ".") -> Path:
 
 
 # Set environment variables.
+print(f"os.getenv('ML_PIPELINE_ROOT_DIR'): {os.getenv('ML_PIPELINE_ROOT_DIR')}")
 if os.getenv("ML_PIPELINE_ROOT_DIR") is None:
     os.environ["ML_PIPELINE_ROOT_DIR"] = str(Path.cwd().parent)
 
