@@ -91,7 +91,8 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+# PEP 582; used by e.
+. github.com/David-OConnor/pyflow
 __pypackages__/
 
 # Celery stuff
@@ -136,7 +137,7 @@ dmypy.json
 # Tools
 mage_data/
 wandb/
-energy_consumption/
+# energy_consumption/
 
 # Data
 *.parquet
@@ -148,7 +149,6 @@ artifacts/
 *.pkl
 
 # Sensitive
-credentials/
 .hw_api_key
 
 # Local notes

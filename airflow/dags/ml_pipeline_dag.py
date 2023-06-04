@@ -6,6 +6,10 @@ from airflow.operators.empty import EmptyOperator
 from airflow.utils.trigger_rule import TriggerRule
 from airflow.utils.edgemodifier import Label
 
+Variable.set("ml_pipeline_feature_group_version", "5")
+Variable.set("ml_pipeline_days_export", "30")
+Variable.set("ml_pipeline_should_run_hyperparameter_tuning", False)
+
 
 @dag(
     dag_id="ml_pipeline",
