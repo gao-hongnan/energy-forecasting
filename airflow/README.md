@@ -124,4 +124,14 @@ bash docker_setup.sh
 
 - sudo usermod -aG docker $USER
 - run Airflow Pipeline above
+
+```
+# Initialize the Airflow database
+docker compose up airflow-init
+
+# Start up all services
+# Note: You should set up the private PyPi server credentials before running this command.
+docker compose --env-file .env up --build -d
+```
+
 - This means Airflow UI is accessible at http://34.102.22.6:8080
